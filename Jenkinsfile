@@ -10,17 +10,15 @@ pipeline {
     
    stages {
    
-      // skip a stage while creating the pipeline
       stage("A stage to be skipped") {
          when {
-            expression { false }  //skip this stage
+            expression { false }
          }
          steps {
             echo 'This step will never be run'
          }
       }
       
-      // Execute when branch = 'master'
       stage("BASIC WHEN - Branch") {
          when {
             branch 'master'
@@ -30,7 +28,6 @@ pipeline {
          }
       }
       
-      // Expression based when example with AND
       stage('WHEN EXPRESSION with AND') {
          when {
             expression {
@@ -41,8 +38,7 @@ pipeline {
             echo 'WHEN with AND expression works!'
          }
       }
-      
-      // Expression based when example
+     
       stage('WHEN EXPRESSION with OR') {
          when {
             expression {
@@ -54,7 +50,6 @@ pipeline {
          }
       }
       
-      // When - AllOf Example
       stage("AllOf") {
         when {
             allOf {
@@ -66,8 +61,7 @@ pipeline {
             echo "AllOf Works!!"
         }
       }
-      
-      // When - Not AnyOf Example
+     
       stage("Not AnyOf") {
          when {
             not {
